@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Reserva</title>
+<link rel="stylesheet" href="css/estilos.css">
+
+</head>
+<body>
+
+    <header>
+        <h1>Formulario de Reserva</h1> <br>
+    <a href="index.html" class="btn-inicio">🏠 Volver al Inicio</a>
+    </header>
+    
+
+    <form id="reservaForm">
+        <label for="nombre">Nombre del lector:</label>
+        <input type="text" id="nombre" required>
+
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="titulo">Título del libro:</label>
+        <input list="libros" id="titulo" class="campo-precargado" required readonly>
+        <datalist id="libros">
+            <option value="Cien años de soledad">
+            <option value="El Último Secreto">
+            <option value="Powerless (Ed. Esp.)">
+            <option value="1984">
+            <option value="Un mundo feliz">
+            <option value="Orgullo y prejuicio">
+            <option value="Don Quijote de la Mancha">
+            <option value="La sombra del viento">
+            <option value="Moby Dick">
+        </datalist>
+
+        <label for="fechaRetiro">Fecha de retiro (≥ hoy):</label>
+        <input type="date" id="fechaRetiro" required>
+
+        <label for="fechaDevolucion">Fecha de devolución (> fecha de retiro):</label>
+        <input type="date" id="fechaDevolucion" required>
+        <p id="fechaError" class="error" style="display:none;">La fecha de devolución debe ser posterior a la fecha de retiro.</p>
+
+        <button type="submit">Registrar Préstamo</button>
+    </form>
+
+    <script>
+        function obtenerIsbnDeUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('isbn'); 
+        }
+
+        function obtenerTituloPorIsbn(isbn) {
+            const mapaLibros = {
+                '978-8437604947': 'Cien años de soledad',
+                '978-6124294026': 'El Último Secreto',
+                '978-6124403329': 'Powerless (Ed. Esp.)',
+                '978-0451524935': '1984',
+                '978-0060850524': 'Un mundo feliz',
+                '978-0141439518': 'Orgullo y prejuicio',
+                '978-8497592208': 'Don Quijote de la Mancha',
+                '978-0307474278': 'La sombra del viento',
+                '978-1503280786': 'Moby Dick'
+            };
+            return mapaLibros[isbn] || 'Título no encontrado'; 
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('reservaForm');
+            const tituloInput = document.getElementById('titulo');
+            const fechaRetiroInput = document.getElementById('fechaRetiro');
+            const fechaDevolucionInput = document.getElementById('fechaDevolucion');
+            const fechaError = document.getElementById('fechaError');
+
+            const isbn = obtenerIsbnDeUrl();
+            if (isbn) {
+                const titulo = obtenerTituloPorIsbn(isbn);
+                tituloInput.value = titulo;
+                tituloInput.insertAdjacentHTML('afterend', `<input type="hidden" name="isbn" value="${isbn}">`);
+            }
+
+            const hoy = new Date().toISOString().split('T')[0];
+            fechaRetiroInput.setAttribute('min', hoy);
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const fechaRetiro = new Date(fechaRetiroInput.value);
+                const fechaDevolucion = new Date(fechaDevolucionInput.value);
+
+                if (fechaDevolucion <= fechaRetiro) {
+                    fechaError.style.display = 'block';
+                    return;
+                } else {
+                    fechaError.style.display = 'none';
+                }
+
+                const reservas = JSON.parse(localStorage.getItem('reservasBiblioteca')) || [];
+
+                const nuevaReserva = {
+                    id: Date.now(),
+                    nombre: document.getElementById('nombre').value,
+                    dni: document.getElementById('dni').value,
+                    email: document.getElementById('email').value,
+                    titulo: tituloInput.value,
+                    isbn: isbn,
+                    fechaRetiro: fechaRetiroInput.value,
+                    fechaDevolucion: fechaDevolucionInput.value,
+                    estado: 'vigente'
+                };
+
+                reservas.push(nuevaReserva);
+                localStorage.setItem('reservasBiblioteca', JSON.stringify(reservas));
+                alert('¡Reserva registrada con éxito!');
+                form.reset();
+            });
+        });
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,225 @@
+:root {
+  --azul-marino: #003366;
+  --azul-claro: #0077b6;
+  --gris-fondo: #f4f4f9;
+  --blanco: #ffffff;
+  --sombra-tarjeta: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--gris-fondo);
+  color: #333;
+}
+
+.encabezado {
+  background-color: var(--azul-marino);
+  color: var(--blanco);
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 6px var(--sombra-tarjeta);
+}
+.titulo-principal {
+  margin: 0;
+  font-size: 2.5em;
+}
+.slogan {
+  margin-top: 5px;
+  font-style: italic;
+  color: #c0c0c0;
+}
+
+.btn-inicio {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: var(--azul-claro);
+  color: var(--blanco);
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.btn-inicio:hover {
+  background-color: #005f99;
+}
+
+.contenedor-principal {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+.grid-catalogo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.tarjeta-libro {
+  background-color: var(--blanco);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px var(--sombra-tarjeta);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tarjeta-libro:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 51, 102, 0.3);
+}
+
+.portada-libro {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.titulo-libro {
+  color: var(--azul-marino);
+  font-size: 1.2em;
+  margin: 10px 0 5px 0;
+}
+.autor {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+.precio {
+  font-weight: bold;
+  color: var(--azul-claro);
+  margin-bottom: 15px;
+}
+
+.btn-reservar {
+  background-color: var(--azul-claro);
+  color: var(--blanco);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+.btn-reservar:hover {
+  background-color: #005f99;
+}
+
+.pie-pagina {
+  background-color: #333;
+  color: var(--blanco);
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+body {
+            font-family: sans-serif;
+            margin: 0;
+        }
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 1.5em;
+            text-align: center;
+        }
+        h1 { margin: 0; }
+        form {
+            max-width: 500px;
+            margin: 2em auto;
+            padding: 0 1em;
+        }
+        label, input, select {
+            display: block;
+            width: 100%;
+            margin-bottom: 1em;
+        }
+        input, select {
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .campo-precargado {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+
+
+
+
+
+
+
+
+        
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+        }
+        header {
+            background-color: #3498db; /* Mismo azul que en el otro archivo */
+            color: white;
+            padding: 1.5em;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        main {
+            padding: 2em;
+        }
+        #controles {
+            margin-bottom: 1em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            align-items: center;
+        }
+        #buscador {
+            padding: 8px;
+            width: 300px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }

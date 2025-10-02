@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Reservas</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <h1>Listado de Reservas</h1> <br>
+        <a href="index.html" class="btn-inicio">🏠 Volver al Inicio</a>
+    </nav>
+    </header>
+
+    <main>
+        <div id="controles">
+            <input type="text" id="buscador" placeholder="Buscar por lector o título...">
+            <p>Préstamos vigentes: <span id="contadorVigentes">0</span></p>
+        </div>
+
+        <table id="tablaReservas">
+            <thead>
+                <tr>
+                    <th>Nombre Lector</th>
+                    <th>Título Libro</th>
+                    <th>Fecha Retiro</th>
+                    <th>Fecha Devolución</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </main>
+
+    <script src="js/reservas.js"></script>
+
+</body>
+</html>
