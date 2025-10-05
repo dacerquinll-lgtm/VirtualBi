@@ -4,50 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Reserva</title>
-<link rel="stylesheet" href="css/estilos.css">
-
+    <link rel="stylesheet" href="vendor-bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="vendor-bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-    <header>
-        <h1>Formulario de Reserva</h1> <br>
-    <a href="index.html" class="btn-inicio">🏠 Volver al Inicio</a>
+    <header class="encabezado"> 
+        <h1 class="titulo-principal">Formulario de Reserva</h1> <br>
+        <a href="index.html" class="btn-inicio">🏠 Volver al Inicio</a>
+        <a href="catalogo.html" class="btn-inicio" style="margin-left: 10px;">📚 Volver al Catálogo</a>
     </header>
     
+    <main class="contenedor-principal"> 
+        <form id="reservaForm">
+            <label for="nombre">Nombre del lector:</label>
+            <input type="text" id="nombre" required>
 
-    <form id="reservaForm">
-        <label for="nombre">Nombre del lector:</label>
-        <input type="text" id="nombre" required>
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" required>
 
-        <label for="dni">DNI:</label>
-        <input type="text" id="dni" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
+            <label for="titulo">Título del libro:</label>
+            <input list="libros" id="titulo" class="campo-precargado" required readonly>
+            <datalist id="libros">
+                <option value="Cien años de soledad">
+                <option value="El Último Secreto">
+                <option value="Powerless (Ed. Esp.)">
+                <option value="1984">
+                <option value="Un mundo feliz">
+                <option value="Orgullo y prejuicio">
+                <option value="Don Quijote de la Mancha">
+                <option value="La sombra del viento">
+                <option value="Moby Dick">
+            </datalist>
 
-        <label for="titulo">Título del libro:</label>
-        <input list="libros" id="titulo" class="campo-precargado" required readonly>
-        <datalist id="libros">
-            <option value="Cien años de soledad">
-            <option value="El Último Secreto">
-            <option value="Powerless (Ed. Esp.)">
-            <option value="1984">
-            <option value="Un mundo feliz">
-            <option value="Orgullo y prejuicio">
-            <option value="Don Quijote de la Mancha">
-            <option value="La sombra del viento">
-            <option value="Moby Dick">
-        </datalist>
+            <label for="fechaRetiro">Fecha de retiro (≥ hoy):</label>
+            <input type="date" id="fechaRetiro" required>
 
-        <label for="fechaRetiro">Fecha de retiro (≥ hoy):</label>
-        <input type="date" id="fechaRetiro" required>
+            <label for="fechaDevolucion">Fecha de devolución (> fecha de retiro):</label>
+            <input type="date" id="fechaDevolucion" required>
+            <p id="fechaError" class="error" style="display:none;">La fecha de devolución debe ser posterior a la fecha de retiro.</p>
 
-        <label for="fechaDevolucion">Fecha de devolución (> fecha de retiro):</label>
-        <input type="date" id="fechaDevolucion" required>
-        <p id="fechaError" class="error" style="display:none;">La fecha de devolución debe ser posterior a la fecha de retiro.</p>
+            <button type="submit">Registrar Préstamo</button>
+        </form>
+    </main>
 
-        <button type="submit">Registrar Préstamo</button>
-    </form>
+    <footer class="pie-pagina"> 
+        <p>© 2025 Biblioteca Virtual | Examen G5</p>
+    </footer>
 
     <script>
         function obtenerIsbnDeUrl() {
@@ -57,7 +64,7 @@
 
         function obtenerTituloPorIsbn(isbn) {
             const mapaLibros = {
-                '978-8437604947': 'Cien años de soledad',
+                '978-8437604947': 'Cien años de soledad', 
                 '978-6124294026': 'El Último Secreto',
                 '978-6124403329': 'Powerless (Ed. Esp.)',
                 '978-0451524935': '1984',
@@ -118,6 +125,7 @@
                 localStorage.setItem('reservasBiblioteca', JSON.stringify(reservas));
                 alert('¡Reserva registrada con éxito!');
                 form.reset();
+
             });
         });
     </script>
