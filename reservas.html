@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Reservas</title>
+    
+    <link rel="stylesheet" href="vendor-bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="vendor-bootstrap/css/bootstrap-grid.css">
+    
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-    <header>
-        <h1>Listado de Reservas</h1> <br>
+    <header class="encabezado"> 
+        <h1 class="titulo-principal">Listado de Reservas</h1> <br>
         <a href="index.html" class="btn-inicio">🏠 Volver al Inicio</a>
-    </nav>
+        <a href="catalogo.html" class="btn-inicio" style="margin-left: 10px;">📚 Volver al Catálogo</a>
+
     </header>
 
-    <main>
+    <main class="contenedor-principal"> 
         <div id="controles">
             <input type="text" id="buscador" placeholder="Buscar por lector o título...">
             <p>Préstamos vigentes: <span id="contadorVigentes">0</span></p>
@@ -35,6 +40,10 @@
             </tbody>
         </table>
     </main>
+
+    <footer class="pie-pagina">
+        <p>© 2025 Biblioteca Virtual | Examen G5</p>
+    </footer>
 
     <script src="js/reservas.js"></script>
 
